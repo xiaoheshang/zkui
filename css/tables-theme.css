@@ -1,0 +1,4 @@
+.table > thead > tr > th,
+.table > thead > tr > td {
+    border-bottom-width: 1px;
+}

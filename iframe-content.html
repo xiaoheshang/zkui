@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>登陆页面</title>
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <!--国产浏览器使用高速模式，即webkit内核-->
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="Content-type" content="text/html;charset=utf-8">
+    <meta name="description" content="湖南省教育考试院历年高招系统">
+    <meta name="author" content="zk">
+    <link rel="stylesheet" type="text/css" href="css/material-design-iconic-font.css">
+    <link rel="stylesheet" type="text/css" href="css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="css/base.css">
+    <link rel="stylesheet" type="text/css" href="css/layout.css">
+    <link rel="stylesheet" type="text/css" href="css/forms.css">
+    <link rel="stylesheet" type="text/css" href="css/forms-theme.css">
+    <link rel="stylesheet" type="text/css" href="css/buttons.css">
+    <link rel="stylesheet" type="text/css" href="css/buttons-theme.css">
+    <link rel="stylesheet" type="text/css" href="css/tables.css">
+    <link rel="stylesheet" type="text/css" href="css/tables-theme.css">
+    <link rel="stylesheet" type="text/css" href="css/pagination.css">
+    <link rel="stylesheet" type="text/css" href="css/pagination-theme.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+
+    <!--[if lt IE 9]>
+        <srcipt src="scripts/html5shiv.min.js"></srcipt>
+        <srcipt src="scripts/respond.min.js"></srcipt>
+    <![endif]-->
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <form class="form-inline">
+                <div class="form-group">
+                    <label for="ddlnf" class="sr-only">年份</label>
+                    <select name="ddlnf" id="ddlnf" class="form-control">
+                                    <option value="0000">年份</option>
+                                    <option value="2015">2015</option>
+                                    <option value="2014">2014</option>
+                                    <option value="2013">2013</option>
+                                    <option value="2012">2012</option>
+                                    <option value="2011">2011</option>
+                                    <option value="2010">2010</option>
+                                    <option value="2009">2009</option>
+                                    <option value="2008">2008</option>
+                                    <option value="2007">2007</option>
+                                </select>
+                </div>
+                <div class="form-group">
+                    <label for="ddlsj" class="sr-only">
+                                    市州
+                                </label>
+                    <select name="ddlsj" id="ddlsj" class="form-control" onchange="getXjList(this.value);">
+                                    <option value="00">00 地区名称</option>
+                                    <option value="01">01 长沙市</option>
+                                    <option value="02">02 株洲市</option>
+                                    <option value="03">03 湘潭市</option>
+                                    <option value="04">04 衡阳市</option>
+                                    <option value="05">05 邵阳市</option>
+                                    <option value="06">06 岳阳市</option>
+                                    <option value="07">07 常德市</option>
+                                    <option value="08">08 张家界市</option>
+                                    <option value="23">23 益阳市</option>
+                                    <option value="25">25 娄底市</option>
+                                    <option value="28">28 郴州市</option>
+                                    <option value="29">29 永州市</option>
+                                    <option value="30">30 怀化市</option>
+                                    <option value="31">31 湘西自治州</option>
+                                </select>
+                </div>
+                <div class="form-group">
+                    <label for="ddlxj" class="sr-only">县级</label>
+                    <select name="ddlxj" id="ddlxj" class="form-control">
+                                <option value="0000">0000 县区名称</option><option value="0301">0301 湘潭市区</option>
+                                <option value="0302">0302 雨湖区</option><option value="0304">0304 岳塘区</option>
+                                <option value="0315">0315 韶山市</option><option value="0319">0319 湘乡市</option>
+                                <option value="0321">0321 湘潭县</option><option value="0340">0340 湘潭职高</option>
+                            </select>
+                </div>
+                <div class="form-group">
+                    <label for="txtCxxx" class="sr-only">查询条件</label>
+                    <input name="txtCxxx" type="search" placeholder="考生号/姓名/考号/身份证号" id="txtCxxx" class="form-control">
+                </div>
+                <button type="button" id="btnCxjg" class="btn btn-primary btn-flat" onclick="doSubmits();">查找</button>
+            </form>
+        </div>
+        <div class="row">
+            <table class="table table-hover" id="pageHeader">
+                <thead>
+                    <tr>
+                        <th>入学年份</th>
+                        <th>考生号</th>
+                        <th>姓名</th>
+                        <th>性别</th>
+                        <th>身份证</th>
+                        <th>报名点</th>
+                        <th>详细信息</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>2015年</td>
+                        <td>15430315110001</td>
+                        <td>汤秀</td>
+                        <td>女</td>
+                        <td>430382199709232565</td>
+                        <td>韶山学校</td>
+                        <td><a href="cjlq.aspx?nf=2015&amp;lsh=03150001" target="_blank">成绩录取</a></td>
+                    </tr>
+                    <tr>
+                        <td>2015年</td>
+                        <td>15430315110002</td>
+                        <td>彭恋</td>
+                        <td>女</td>
+                        <td>430382199712160566</td>
+                        <td>韶山学校</td>
+                        <td><a href="cjlq.aspx?nf=2015&amp;lsh=03150002" target="_blank">成绩录取</a></td>
+                    </tr>
+                    <tr>
+                        <td>2015年</td>
+                        <td>15430315110003</td>
+                        <td>肖意逾</td>
+                        <td>女</td>
+                        <td>430382199702042566</td>
+                        <td>韶山学校</td>
+                        <td><a href="cjlq.aspx?nf=2015&amp;lsh=03150003" target="_blank">成绩录取</a></td>
+                    </tr>
+                    <tr>
+                        <td>2015年</td>
+                        <td>15430315110004</td>
+                        <td>庞慧</td>
+                        <td>女</td>
+                        <td>430382199703284065</td>
+                        <td>韶山学校</td>
+                        <td><a href="cjlq.aspx?nf=2015&amp;lsh=03150004" target="_blank">成绩录取</a></td>
+                    </tr>
+                    <tr>
+                        <td>2015年</td>
+                        <td>15430315110005</td>
+                        <td>庞籽妍</td>
+                        <td>女</td>
+                        <td>430382199704020563</td>
+                        <td>韶山学校</td>
+                        <td><a href="cjlq.aspx?nf=2015&amp;lsh=03150005" target="_blank">成绩录取</a></td>
+                    </tr>
+                    <tr>
+                        <td>2015年</td>
+                        <td>15430315110006</td>
+                        <td>刘英姿</td>
+                        <td>女</td>
+                        <td>430382199809203067</td>
+                        <td>韶山学校</td>
+                        <td><a href="cjlq.aspx?nf=2015&amp;lsh=03150006" target="_blank">成绩录取</a></td>
+                    </tr>
+                    <tr>
+                        <td>2015年</td>
+                        <td>15430315110007</td>
+                        <td>黄金凤</td>
+                        <td>女</td>
+                        <td>430381199606077447</td>
+                        <td>韶山学校</td>
+                        <td><a href="cjlq.aspx?nf=2015&amp;lsh=03150007" target="_blank">成绩录取</a></td>
+                    </tr>
+                    <tr>
+                        <td>2015年</td>
+                        <td>15430315110008</td>
+                        <td>龚舒</td>
+                        <td>女</td>
+                        <td>430382199808200067</td>
+                        <td>韶山学校</td>
+                        <td><a href="cjlq.aspx?nf=2015&amp;lsh=03150008" target="_blank">成绩录取</a></td>
+                    </tr>
+                    <tr>
+                        <td>2015年</td>
+                        <td>15430315110009</td>
+                        <td>彭佳彦</td>
+                        <td>女</td>
+                        <td>430382199705024064</td>
+                        <td>韶山学校</td>
+                        <td><a href="cjlq.aspx?nf=2015&amp;lsh=03150009" target="_blank">成绩录取</a></td>
+                    </tr>
+                    <tr>
+                        <td>2015年</td>
+                        <td>15430315110009</td>
+                        <td>彭佳彦</td>
+                        <td>女</td>
+                        <td>430382199705024064</td>
+                        <td>韶山学校</td>
+                        <td><a href="cjlq.aspx?nf=2015&amp;lsh=03150009" target="_blank">成绩录取</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <ul class="pagination">
+                    <li class="disabled"><a href="#">首页</a></li>
+                    <li class="disabled"><a href="#">上一页</a></li>
+                    <li class="active"><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">下一页</a></li>
+                    <li><a href="#">最后一页</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts/jquery.js"></script>
+    <script src="scripts/main.js"></script>
+</body>
+
+</html>
